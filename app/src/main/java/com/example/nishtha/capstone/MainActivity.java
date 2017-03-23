@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity implements TopSongsFragment.Callback {
@@ -18,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements TopSongsFragment.
         setSupportActionBar(toolbar);
         if (findViewById(R.id.movie_detail_container) != null) {
             tablet = true;
-            Log.d("hello",tablet+"nvjfn");
         } else {
             tablet = false;
         }

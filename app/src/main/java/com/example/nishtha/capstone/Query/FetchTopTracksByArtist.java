@@ -19,14 +19,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-public class FetchTrailers extends AsyncTask<String,Void,String>{
+public class FetchTopTracksByArtist extends AsyncTask<String,Void,String>{
 
     OkHttpClient okClient = new OkHttpClient();
     Song[] songs;
     DetailSongFragment fragment;
     Context context;
 
-    public FetchTrailers(DetailSongFragment fragment, Context context){
+    public FetchTopTracksByArtist(DetailSongFragment fragment, Context context){
         this.fragment=fragment;
         this.context = context;
     }

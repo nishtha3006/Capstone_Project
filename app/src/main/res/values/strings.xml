@@ -12,8 +12,22 @@
     <string name="poster">Artist poster</string>
     <string name="tracks">Top Tracks</string>
     <string name="lyrics_title">Lyrics</string>
+    <string name="fav_button">Butten to add songs to the fav list</string>
+    <string name="fav_list_empty">Favorite list is empty</string>
+    <string name="connection_fail">Connection failed</string>
+    <string name="DEFAULT_COUNTRY">india</string>
+    <string name="show_fav">Show Favourites</string>
+    <string name="title">Title</string>
+    <string name="artist">Artist</string>
+
+    <string name="random_song">Cant Feel My Face</string>
+    <string name="random_artist">Artist : Coldplay</string>
+
+    <string name="song_added">Song has been added to the favourite list</string>
+    <string name="song_deleted">Song has been removed from the favourite list</string>
 
     <string name="widget_title">Favourites</string>
     <string name="adUnitId">ca-app-pub-2858442306305283/1864148655</string>
     <string name="adAppId">ca-app-pub-2858442306305283~7910682257</string>
+    
 </resources>

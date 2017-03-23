@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.nishtha.capstone.Adapters.TopTracksAdapter;
 import com.example.nishtha.capstone.Data.SongContract;
-import com.example.nishtha.capstone.Query.FetchTrailers;
+import com.example.nishtha.capstone.Query.FetchTopTracksByArtist;
 import com.example.nishtha.capstone.Query.FetchLyrics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -64,7 +64,7 @@ public class DetailSongFragment extends Fragment {
         Log.d("hello", "on start");
         if(clickedSong !=null&&Utility.isNetworkAvailable(getContext(),getActivity())) {
             new FetchLyrics(this,getContext()).execute(clickedSong.getTitle(), clickedSong.getArtist());
-            new FetchTrailers(this,getContext()).execute(clickedSong.getArtist());
+            new FetchTopTracksByArtist(this,getContext()).execute(clickedSong.getArtist());
         }
     }
 
@@ -94,10 +94,10 @@ public class DetailSongFragment extends Fragment {
                 setMovieFavoured(fav);
                 if (fav) {
                     Toast.makeText(getContext(),
-                            "Song has been added to the favourite list", Toast.LENGTH_LONG).show();
+                            getContext().getString(R.string.song_added), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getContext(),
-                            "Song has been removed from the favourite list", Toast.LENGTH_LONG).show();
+                            getContext().getString(R.string.song_deleted), Toast.LENGTH_LONG).show();
                 }
             }
         });

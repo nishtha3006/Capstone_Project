@@ -51,7 +51,7 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
     GridAdapter madapter;
     String country;
     final int SONG_LOADER =0;
-    Context mcontext;
+    Context mcontext = null;
     boolean fav;
     String[] projection_movie=new String[]{
             SongContract.Song.TABLE_NAME+"."+ SongContract.Song._ID,
@@ -85,8 +85,9 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
     int no_fav_song =0;
 
     public TopSongsFragment(){
-        country ="india";
+
         mcontext=getContext();
+        country = "india";
         fav=false;
     }
 
@@ -94,6 +95,7 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        mcontext = getContext();
         if (checkPlayServices()) {
             buildGoogleApiClient();
         }
@@ -113,19 +115,19 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
             Log.d("hello","getting connected");
             mGoogleApiClient.connect();
         }else{
-            updateMovie(country);
+            updateSongList(country);
         }
 
     }
 
-    private void updateMovie(String country){
+    private void updateSongList(String country){
         fav=false;
         if(Utility.isNetworkAvailable(getContext(),getActivity())) {
-            FetchTopTracks populateMovie = new FetchTopTracks(getContext());
-            populateMovie.execute(country);
+            FetchTopTracks fetchTopTracks = new FetchTopTracks(getContext());
+            fetchTopTracks.execute(country);
             getLoaderManager().restartLoader(SONG_LOADER, null, this);
         }else {
-            Toast.makeText(getContext(),"Connection failed",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),getResources().getString(R.string.connection_fail),Toast.LENGTH_LONG).show();
         }
     }
 
@@ -137,21 +139,22 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.sort_by_pop){
-            updateMovie(country);
+            updateSongList(country);
             return  true;
         }
         if(item.getItemId()==R.id.fav){
             fav=true;
-            loadFavouriteMovie();
+            loadFavouriteSong();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadFavouriteMovie(){
+    private void loadFavouriteSong(){
         no_fav_song =getContext().getContentResolver()
                 .query(SongContract.Favourite.CONTENT_URI,null,null,null,null).getCount();
         if(no_fav_song ==0){
-            Toast.makeText(getContext(),"Favorite list is empty",Toast.LENGTH_LONG).show();
+            mcontext = getContext();
+            Toast.makeText(getContext(),mcontext.getString(R.string.fav_list_empty),Toast.LENGTH_LONG).show();
             fav = false;
             getLoaderManager().restartLoader(SONG_LOADER, null, this);
         }else
@@ -233,18 +236,18 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
                 no_fav_song =getContext().getContentResolver()
                         .query(SongContract.Favourite.CONTENT_URI,null,null,null,null).getCount();
                 if((fav && no_fav_song ==0)){
-                    Toast.makeText(getContext(),"Favorite list is empty",Toast.LENGTH_LONG).show();
-                    updateMovie(country);
+                    Toast.makeText(getContext(),mcontext.getString(R.string.fav_list_empty),Toast.LENGTH_LONG).show();
+                    updateSongList(country);
                 }else if(!fav){
                     Log.d("hello","in top songs");
-                    updateMovie(country);
+                    updateSongList(country);
                 }
             } catch (IOException ignored) {
                 //do something
             }
         } else {
             Log.d("hello","mlocation is null");
-            updateMovie(country);
+            updateSongList(country);
         }
     }
 

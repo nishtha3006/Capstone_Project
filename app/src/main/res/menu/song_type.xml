@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/sort_by_pop"
-        android:title="Top Tracks"
+        android:title="@string/tracks"
         android:orderInCategory="98"
         app:showAsAction="never"/>
     <item
         android:id="@+id/fav"
-        android:title="Show Favourite"
+        android:title="@string/show_fav"
         android:orderInCategory="100"
         app:showAsAction="never"/>
 </menu>

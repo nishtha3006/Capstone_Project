@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="@string/title"
         android:id="@+id/songName"
         android:textSize="18sp"
         android:elevation="6dp"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Artist"
+        android:text="@string/artist"
         android:id="@+id/singer"
         android:layout_marginTop="0dp"
         android:layout_below="@id/songName"

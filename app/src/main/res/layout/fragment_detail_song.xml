@@ -55,7 +55,7 @@
                 android:id="@+id/title"
                 android:textColor="@color/title_color"
                 android:fontFamily="sans-serif"
-                android:text="Can't Feel My Face"
+                android:text="@string/random_song"
                 android:textSize="27dp"
                 android:paddingLeft="10dp"
                 android:layout_below="@+id/poster"
@@ -69,12 +69,14 @@
                 android:id="@+id/fav_button"
                 android:layout_marginTop="10dp"
                 android:layout_width="40dp"
-                android:layout_height="40dp" />
+                android:layout_height="40dp"
+                android:contentDescription="@string/fav_button"
+                />
              </LinearLayout>
              <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:text="Artist : Coldplay"
+                 android:text="@string/random_artist"
                  android:id="@+id/artistName"
                  android:layout_marginTop="0dp"
                  android:layout_marginLeft="10dp"
