@@ -75,12 +75,12 @@ public class DetailSongFragment extends Fragment {
         ButterKnife.bind(this, view);
         trailer_list=(LinearListView)view.findViewById(R.id.detail_trailers);
         Bundle arguments=getArguments();
-        clickedSong =arguments.getParcelable("song");
+        clickedSong =arguments.getParcelable(getContext().getString(R.string.key_bundle));
         Log.d("hello","this is title"+ clickedSong.getTitle());
         Log.d("hello", "this is artish" + clickedSong.getArtist());
         title.setText(clickedSong.getTitle());
-        artistName.setText("Artist : " + clickedSong.getArtist());
-        lyrics.setText("Loading...");
+        artistName.setText(getContext().getString(R.string.artist_prefix) + clickedSong.getArtist());
+        lyrics.setText(getContext().getString(R.string.loading));
         Picasso.with(getContext()).load(clickedSong.getImage_url()).resize(700,750).into(poster);
         button.setSelected(fav);
         button.setBackgroundDrawable(getContext().getResources().getDrawable(R.drawable.button_image));

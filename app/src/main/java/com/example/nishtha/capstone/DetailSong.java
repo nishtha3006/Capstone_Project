@@ -13,7 +13,7 @@ public class DetailSong extends AppCompatActivity {
         if(savedInstanceState==null){
             DetailSongFragment fragment=new DetailSongFragment();
             Bundle temp=new Bundle();
-            temp.putParcelable("song",getIntent().getParcelableExtra("song"));
+            temp.putParcelable(getString(R.string.key_bundle),getIntent().getParcelableExtra(getString(R.string.key_bundle)));
             fragment.setArguments(temp);
             getSupportFragmentManager().beginTransaction().
                     add(R.id.detail_layout,fragment).commit();

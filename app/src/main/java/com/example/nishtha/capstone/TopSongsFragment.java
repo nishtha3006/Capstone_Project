@@ -127,7 +127,7 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
             fetchTopTracks.execute(country);
             getLoaderManager().restartLoader(SONG_LOADER, null, this);
         }else {
-            Toast.makeText(getContext(),getResources().getString(R.string.connection_fail),Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),mcontext.getString(R.string.connection_fail),Toast.LENGTH_LONG).show();
         }
     }
 
@@ -318,7 +318,7 @@ public class TopSongsFragment extends Fragment implements LoaderManager.LoaderCa
                         PLAY_SERVICES_RESOLUTION_REQUEST).show();
             } else {
                 Toast.makeText(getContext(),
-                        "This device is not supported.", Toast.LENGTH_LONG)
+                        mcontext.getString(R.string.device_not_supported), Toast.LENGTH_LONG)
                         .show();
             }
             return false;

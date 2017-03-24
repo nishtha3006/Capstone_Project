@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity implements TopSongsFragment.
     public void onItemSelected(Song song) {
         if(!tablet){
             Intent intent=new Intent(this,DetailSong.class);
-            intent.putExtra("song", song);
+            intent.putExtra(getString(R.string.key_bundle), song);
             startActivity(intent);
         }else{
             Bundle arguments = new Bundle();
-            arguments.putParcelable("song", song);
+            arguments.putParcelable(getString(R.string.key_bundle), song);
             DetailSongFragment fragment = new DetailSongFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
